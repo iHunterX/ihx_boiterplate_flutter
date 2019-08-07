@@ -58,7 +58,7 @@ dependencies:
   dio: 2.1.6
 
   # A flexible widget for user notification.
-  flushbar: 1.5.3
+  flushbar: 1.6.0
 
   # Dependency injection
   inject:
@@ -67,7 +67,7 @@ dependencies:
       path: package/inject
 
 dependency_overrides:
-  analyzer: ^0.36.3
+  analyzer: ^0.36.4
 
 dev_dependencies:
   flutter_test:

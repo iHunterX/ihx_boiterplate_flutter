@@ -13,46 +13,51 @@ mixin _$PostStore on _PostStore, Store {
 
   @override
   PostsList get postsList {
+    _$postsListAtom.context.enforceReadPolicy(_$postsListAtom);
     _$postsListAtom.reportObserved();
     return super.postsList;
   }
 
   @override
   set postsList(PostsList value) {
-    _$postsListAtom.context
-        .checkIfStateModificationsAreAllowed(_$postsListAtom);
-    super.postsList = value;
-    _$postsListAtom.reportChanged();
+    _$postsListAtom.context.conditionallyRunInAction(() {
+      super.postsList = value;
+      _$postsListAtom.reportChanged();
+    }, _$postsListAtom, name: '${_$postsListAtom.name}_set');
   }
 
   final _$successAtom = Atom(name: '_PostStore.success');
 
   @override
   bool get success {
+    _$successAtom.context.enforceReadPolicy(_$successAtom);
     _$successAtom.reportObserved();
     return super.success;
   }
 
   @override
   set success(bool value) {
-    _$successAtom.context.checkIfStateModificationsAreAllowed(_$successAtom);
-    super.success = value;
-    _$successAtom.reportChanged();
+    _$successAtom.context.conditionallyRunInAction(() {
+      super.success = value;
+      _$successAtom.reportChanged();
+    }, _$successAtom, name: '${_$successAtom.name}_set');
   }
 
   final _$loadingAtom = Atom(name: '_PostStore.loading');
 
   @override
   bool get loading {
+    _$loadingAtom.context.enforceReadPolicy(_$loadingAtom);
     _$loadingAtom.reportObserved();
     return super.loading;
   }
 
   @override
   set loading(bool value) {
-    _$loadingAtom.context.checkIfStateModificationsAreAllowed(_$loadingAtom);
-    super.loading = value;
-    _$loadingAtom.reportChanged();
+    _$loadingAtom.context.conditionallyRunInAction(() {
+      super.loading = value;
+      _$loadingAtom.reportChanged();
+    }, _$loadingAtom, name: '${_$loadingAtom.name}_set');
   }
 
   final _$getPostsAsyncAction = AsyncAction('getPosts');
